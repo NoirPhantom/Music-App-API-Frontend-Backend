@@ -1,0 +1,26 @@
+<form (ngSubmit) = "addNewMusic()">
+
+    <div class="mb-3">
+      <label for="musicName" class="form-label">Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)] = "track.name">
+    </div>
+
+    <div class="mb-3">
+      <label for="artist" class="form-label">Artist</label>
+      <input type="text" class="form-control" name="artist" [(ngModel)] = "track.artist">
+    </div>
+
+    <div class="mb-3">
+      <label for="genre" class="form-label">Genre</label>
+      <input type="text" class="form-control" name="genre" [(ngModel)] = "track.genre">
+    </div>
+
+    <div class="mb-3">
+      <label for="durationInSeconds" class="form-label">Duration</label>
+      <input type="text" class="form-control" name="durationInSeconds" placeholder="Enter the song duration in seconds" [(ngModel)] = "track.durationInSeconds">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+
