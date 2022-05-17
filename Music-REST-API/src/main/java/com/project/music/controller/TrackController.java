@@ -38,7 +38,7 @@ public class TrackController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/track/{trackId}")
-    public Optional<Track> getTrack(Long trackId) {
+    public Optional<Track> getTrack(@PathVariable(value = "trackId") Long trackId) {
         return trackService.getTrack(trackId);
     }
 

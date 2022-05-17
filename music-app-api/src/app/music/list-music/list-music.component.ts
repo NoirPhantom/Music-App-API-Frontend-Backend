@@ -12,6 +12,8 @@ export class ListMusicComponent implements OnInit {
 
   musicList$ ! : Observable<Track[]>;
 
+  track = new Track()
+
   notifyChange : Subscription = this.service.subjectNotifier.subscribe(notify => {
     this.musicList$ = this.service.getAllMusic();
   });
@@ -34,5 +36,22 @@ export class ListMusicComponent implements OnInit {
         this.service.notifyChange();
       });
     }
+  }
+
+  editMusic(musicId : number) {
+    this.service.getMusicById(musicId).subscribe(response => {
+      this.track = response;
+    });
+  }
+
+
+  updateMusic() {
+    this.service.putMusic(this.track.id, this.track).subscribe(res => {
+      this.service.notifyChange();
+      const editMusicModalCloseBtn = document.getElementById("editMusicModalClose");
+      if (editMusicModalCloseBtn) {
+        editMusicModalCloseBtn.click();
+      }
+    });
   }
 }

@@ -31,10 +31,10 @@ class MusicApplicationTests {
 	public void testCreate() {
 		Track t = new Track();
 		t.setId(1L);
-		t.setSongName("Believer");
-		t.setGenreType("Rock");
-		t.setArtistName("Imagine Dragons");
-		t.setSec(205);
+		t.setName("Believer");
+		t.setGenre("Rock");
+		t.setArtist("Imagine Dragons");
+		t.setDurationInSeconds(205);
 		tRepository.save(t);
 		assertNotNull(tRepository.findById(1L).get());
 	}
@@ -50,16 +50,16 @@ class MusicApplicationTests {
 	@Order(3)
 	public void testReadById() {
 		Track track = tRepository.findById(1L).get();
-		assertEquals(205, track.getSec());
+		assertEquals(205, track.getDurationInSeconds());
 	}
 
 	@Test
 	@Order(4)
 	public void testUpdate() {
 		Track t = tRepository.findById(1L).get();
-		t.setSec(215);
+		t.setDurationInSeconds(215);
 		tRepository.save(t);
-		assertNotEquals(205, tRepository.findById(1L).get().getSec());
+		assertNotEquals(205, tRepository.findById(1L).get().getDurationInSeconds());
 	}
 
 	@Test
